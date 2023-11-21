@@ -15,6 +15,8 @@
                 <?php foreach ($danhsachloaisanpham as $loaisanpham) {
                     extract($loaisanpham);
                     $anhloaisanpham = '<img src="../upload/' . $anhloaisanpham . '" width="100px" height="100px"  alt="lỗi" > ';
+                    $suasanpham = "index.php?action=suasanpham&idloaisanpham=" . $idloaisanpham;
+                    $xoasanpham = "index.php?action=xoasanpham&idloaisanpham=" . $idloaisanpham;
                     echo '
                 <tr>
                     <td>' . $idloaisanpham . '</td>
@@ -22,7 +24,7 @@
                     <td>' . $anhloaisanpham . '</td>
                     <td>' . $motasanpham . '</td>
                     <td>' . $tendanhmuc . '</td>
-                    <td><a href="">Sửa</a> | <a href="">Xóa</a></td>
+                    <td><a href="'.$suasanpham.'">Sửa</a> | <a href="' . $xoasanpham . '"><input type="button" value="Xóa" onclick="return confirm(\'bạn muốn xóa sản phẩm này?\')"></a></td>
                 </tr>
                         ';
                 }
