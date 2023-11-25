@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2023 lúc 11:01 AM
+-- Thời gian đã tạo: Th10 24, 2023 lúc 05:46 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.1.17
 
@@ -64,12 +64,29 @@ CREATE TABLE `anhsanpham` (
 --
 
 INSERT INTO `anhsanpham` (`idanhsanpham`, `idsanpham`, `anhsanpham`) VALUES
-(72, 65, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
-(73, 66, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
-(74, 67, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
-(75, 69, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
-(76, 71, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
-(77, 72, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg');
+(141, 94, 'ip1.jpg'),
+(142, 94, 'ip2.jpg'),
+(143, 94, 'ip3.jpg'),
+(144, 94, 'ip4.jpg'),
+(145, 95, 'QuizizzSampleSpreadsheetUpdated.xlsx'),
+(146, 96, 'ip2.jpg'),
+(147, 96, 'ip3.jpg'),
+(148, 97, 'admin.jpg'),
+(149, 97, 'dkydn.jpg'),
+(150, 97, 'usercase.drawio (1).png'),
+(151, 97, 'usercase.drawio.png'),
+(152, 98, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
+(153, 98, 'z4885734743884_f614dd8156675625b1822e126558a0f1.jpg'),
+(154, 98, 'z4750946381163_a37a91305cf82691af047b8a089387c2.jpg'),
+(155, 98, 'ds.jpg'),
+(156, 99, 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg'),
+(157, 99, 'z4885734743884_f614dd8156675625b1822e126558a0f1.jpg'),
+(158, 99, 'z4750946381163_a37a91305cf82691af047b8a089387c2.jpg'),
+(159, 99, 'ds.jpg'),
+(160, 100, 'ds.jpg'),
+(161, 100, 'admin.jpg'),
+(162, 100, 'dkydn.jpg'),
+(163, 100, 'usercase.drawio (1).png');
 
 -- --------------------------------------------------------
 
@@ -132,11 +149,9 @@ CREATE TABLE `danhmucsanpham` (
 
 INSERT INTO `danhmucsanpham` (`iddanhmuc`, `tendanhmuc`, `trangthai`) VALUES
 (1, 'Bếp Điện', b'0'),
-(2, 'Nồi Cơm', b'0'),
 (3, 'Nồi và Nồi áp suất', b'0'),
 (4, 'Bát, Đĩa, và Đồ đựng thực phẩm', b'0'),
-(5, 'Đồ cắt, Thái, và Chế biến thức ăn', b'0'),
-(6, 'Đồ dùng vệ sinh và Làm sạch bếp', b'0');
+(5, 'Đồ cắt, Thái, và Chế biến thức ăn', b'0');
 
 -- --------------------------------------------------------
 
@@ -186,6 +201,7 @@ CREATE TABLE `loaisanpham` (
   `tenloaisanpham` varchar(250) NOT NULL,
   `motasanpham` varchar(1000) NOT NULL,
   `anhloaisanpham` varchar(250) NOT NULL,
+  `giasanpham` int(11) NOT NULL,
   `iddanhmuc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -193,8 +209,14 @@ CREATE TABLE `loaisanpham` (
 -- Đang đổ dữ liệu cho bảng `loaisanpham`
 --
 
-INSERT INTO `loaisanpham` (`idloaisanpham`, `tenloaisanpham`, `motasanpham`, `anhloaisanpham`, `iddanhmuc`) VALUES
-(72, 'sfffvfdb', 'dfbfdbda', 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg', 1);
+INSERT INTO `loaisanpham` (`idloaisanpham`, `tenloaisanpham`, `motasanpham`, `anhloaisanpham`, `giasanpham`, `iddanhmuc`) VALUES
+(94, 'Nguyễn Mạnh Cương', 'Đẹp trai', 'admin.jpg', 0, 3),
+(95, '1', '2', 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg', 0, 1),
+(96, 'dũng', '1', 'ip1.jpg', 0, 1),
+(97, 'sdvdsv', 'ưd', 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg', 0, 1),
+(98, 'sdvdsv', 'ưdsad', 'z4886303002892_48c85167eb5a4aaab623e84897245bb3.jpg', 1, 1),
+(99, 'cường', 'áccscs', 'z4885734743884_f614dd8156675625b1822e126558a0f1.jpg', 213, 1),
+(100, 'agagag', 'saccsc', 'z4750946381163_a37a91305cf82691af047b8a089387c2.jpg', 23213213, 5);
 
 -- --------------------------------------------------------
 
@@ -257,7 +279,6 @@ CREATE TABLE `sanphambienthe` (
   `soluongsanpham` int(11) NOT NULL,
   `size` int(11) NOT NULL,
   `color` int(11) NOT NULL,
-  `giatiengoc` int(11) NOT NULL,
   `giakhuyenmai` int(11) NOT NULL,
   `idloaisanpham` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -266,15 +287,18 @@ CREATE TABLE `sanphambienthe` (
 -- Đang đổ dữ liệu cho bảng `sanphambienthe`
 --
 
-INSERT INTO `sanphambienthe` (`idsanphambienthe`, `soluongsanpham`, `size`, `color`, `giatiengoc`, `giakhuyenmai`, `idloaisanpham`) VALUES
-(28, 3, 1, 1, 1, 2, 65),
-(29, 3, 1, 1, 1, 2, 65),
-(30, 3, 1, 1, 1, 2, 66),
-(31, 3, 1, 1, 1, 2, 66),
-(32, 5, 2, 1, 3, 4, 67),
-(33, 99, 1, 1, 99, 99, 69),
-(34, 99, 1, 1, 99, 99, 71),
-(35, 99, 1, 1, 12, 12, 72);
+INSERT INTO `sanphambienthe` (`idsanphambienthe`, `soluongsanpham`, `size`, `color`, `giakhuyenmai`, `idloaisanpham`) VALUES
+(71, 1, 1, 3, 1, 94),
+(72, 2, 2, 3, 2, 94),
+(73, 3, 2, 3, 3, 94),
+(74, 2, 1, 1, 2, 95),
+(75, 2, 1, 1, 2, 95),
+(76, 1, 1, 1, 1, 96),
+(77, 1, 1, 1, 1, 96),
+(78, 1, 1, 1, 1, 97),
+(79, 1, 1, 2, 1, 98),
+(80, 123, 1, 2, 123, 99),
+(81, 12313, 2, 1, 12313, 100);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -360,7 +384,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT cho bảng `anhsanpham`
 --
 ALTER TABLE `anhsanpham`
-  MODIFY `idanhsanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `idanhsanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT cho bảng `binhluan`
@@ -378,7 +402,7 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT cho bảng `danhmucsanpham`
 --
 ALTER TABLE `danhmucsanpham`
-  MODIFY `iddanhmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `iddanhmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `giohang`
@@ -396,7 +420,7 @@ ALTER TABLE `kichco`
 -- AUTO_INCREMENT cho bảng `loaisanpham`
 --
 ALTER TABLE `loaisanpham`
-  MODIFY `idloaisanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `idloaisanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT cho bảng `orderitems`
@@ -414,7 +438,7 @@ ALTER TABLE `phuongthucthanhtoan`
 -- AUTO_INCREMENT cho bảng `sanphambienthe`
 --
 ALTER TABLE `sanphambienthe`
-  MODIFY `idsanphambienthe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `idsanphambienthe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
